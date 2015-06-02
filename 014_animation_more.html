@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid gray;
+		}
+	</style>
+	<script>
+		var ctx = null;
+		var boxX = 0;
+		window.onload = function(){
+			ctx = document.getElementById("can").getContext("2d");
+			setInterval(anim,10)
+		}
+		function anim(){
+			ctx.clearRect(0,0,500,500);
+			if(boxX > 500){
+				boxX = -50;
+			}
+			++boxX;
+			ctx.fillStyle = "black";
+			ctx.fillRect(boxX,200,50,50);
+		}
+	</script>
+</head>
+<body>
+	<canvas id="can" width="500" height="500"></canvas>
+</body>
+</html>

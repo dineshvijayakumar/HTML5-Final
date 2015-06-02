@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<!-- script>
+		window.onload = function(){
+			//setInterval(checkIt, 10);
+			//document.getElementById("playBtn").addEventListener("click", playHandler);
+			//document.getElementById("pauseBtn").addEventListener("click", pauseHandler);
+			//document.getElementById("stopBtn").addEventListener("click", stopHandler);
+		}
+		function checkIt(){
+			document.getElementById("player").innerHTML = document.getElementById("audi").currentTime
+		}
+		function playHandler(){
+			 document.getElementById("audi").play()
+		}
+		function pauseHandler(){
+			 document.getElementById("audi").pause()
+		}
+		function stopHandler(){
+			document.getElementById("audi").pause();
+			document.getElementById("audi").currentTime = 0;
+		}
+	</script> -->
+</head>
+<body>
+	<video controls loop preload="none" >
+		
+		<object type="application/x-shockwave-flash" width="640" height="480">
+			<param name="movie" value="medias/html5.swf" />
+		</object>
+		
+		<source src="medias/html5.webm"></source>
+		<source src="medias/html5.mp4"></source>
+		<source src="medias/html5.ogv"></source>
+	</video>
+	
+	<!-- <audio id="audi"  >
+		<source src="medias/cooler.mp3"></source>
+		<source src="medias/cooler.ogg"></source>
+	</audio>
+	<h1 id="player"></h1> -->
+	
+<!-- 	<button id="playBtn">play</button>
+	<button id="pauseBtn">pause</button>
+	<button id="stopBtn">stop</button> -->
+	<!--
+		http://learnjs.in/html5/medias.zip
+		
+		http://learnjs.in/html5/html5.mp4
+		http://learnjs.in/html5/html5.ogv
+		http://learnjs.in/html5/html5.swf
+		http://learnjs.in/html5/html5.webm
+	-->
+</body>
+</html>

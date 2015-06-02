@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 5px dotted green;
+		}
+	</style>
+	<script>
+		var ctx = null;
+		window.onload = function(){
+			ctx = document.getElementById("can").getContext("2d");
+		//	var img = document.getElementById("raj");
+		
+		/*
+		 */
+			var img = new Image();
+			img.src = "images/rajani.jpg";
+			
+			img.addEventListener("load", function(){
+				ctx.translate(100,0);
+				ctx.rotate((Math.PI/180)*45);
+				ctx.drawImage(img,0, 0,100,100);
+			});
+			
+		}
+	</script>
+</head>
+<body>
+<!-- 	<img id="raj" src="images/rajani.jpg" /> -->
+	<canvas id="can"></canvas>
+</body>
+</html>

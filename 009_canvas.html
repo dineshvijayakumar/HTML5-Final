@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid red;
+		}
+		h1{
+			font-family: Arial;
+			font-size: 250px;
+			color: maroon;
+		}
+	</style>
+	<script>
+		var can = null;
+		var ctx = null;
+		window.onload = function(){
+			can = document.querySelector("canvas");
+			ctx = can.getContext("2d");
+			ctx.font = "normal 240px arial";
+			ctx.fillStyle = "#C918E0";
+			
+			/*
+			 * Transformation
+			 */
+			// ctx.scale(0.5,2);
+			ctx.rotate((Math.PI/180)*5);
+			ctx.translate(50,200);
+			
+			ctx.lineWidth = 10;
+			ctx.strokeText("Accenture",0,200);
+			ctx.fillText("Accenture",0,0);
+			
+			ctx.fillStyle = "orange";
+			ctx.font = "bold 70px verdana";
+			ctx.fillText("Bangalore",0,240);
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas width="1200" height="250">
+		Are you still using IE 8 ????
+	</canvas>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 2px solid red;
+		}
+	</style>
+	<script>
+		var ctx = null;
+		window.onload = function(){
+			ctx = document.getElementById("can").getContext("2d");
+			ctx.canvas.width = 600;
+			ctx.canvas.height = 600;
+			
+			// ctx.arc(left offset, top offset, radius, start point, end point, ccw or not)
+			ctx.arc(100, 100, 50, (Math.PI/180)*0, (Math.PI/180)*180, false);
+			ctx.stroke();
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas id="can"></canvas>
+</body>
+</html>

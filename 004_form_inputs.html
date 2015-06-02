@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script>
+		function changeHandler(elm, target){
+			var tag = document.getElementById(target);
+			// tag.textContent = elm.value;
+			tag.value = elm.value;
+			// tag.setAttribute("style","background-color : "+elm.value+"");
+		}
+	</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>Attribute Name</td>
+			<td>As rendered in browser</td>
+		</tr>
+		<tr>
+			<td>Text</td>
+			<td>
+				<input type="text" />
+			</td>
+		</tr>
+		<tr>
+			<td>Color</td>
+			<td>
+				<input type="color" 
+				onchange="changeHandler(this,'colDisplay')" />
+				<h4 id="colDisplay"></h4>
+			</td>
+		</tr>
+		<tr>
+			<td>Search</td>
+			<td>
+				<input type="search" />
+			</td>
+		</tr>
+		<tr>
+			<td>Time</td>
+			<td>
+				<input type="time" />
+			</td>
+		</tr>
+		<tr>
+			<td>Date</td>
+			<td>
+				<input type="date" />
+				<input type="date" min="2015-06-01" max="2015-06-25" /> 
+				<input type="date" step="7" value="2015-06-01" />
+				
+			</td>
+		</tr>
+		<tr>
+			<td>Week</td>
+			<td>
+				<input type="week" />
+			</td>
+		</tr>
+		<tr>
+			<td>Month</td>
+			<td>
+				<input type="month" />
+			</td>
+		</tr>
+		<tr>
+			<td>Date Time</td>
+			<td>
+				<input type="datetime" />
+			</td>
+		</tr>
+		<tr>
+			<td>Date Time Local</td>
+			<td>
+				<input type="datetime-local" />
+			</td>
+		</tr>
+		<tr>
+			<td>Number</td>
+			<td>
+				<input type="number" min="18" max="80" />
+			</td>
+		</tr>
+		<tr>
+			<td>Range</td>
+			<td>
+				<input type="range" min="10" max="55" step="5" onchange="changeHandler(this,'rngHandler')" />
+				<output id="rngHandler"></output>
+			</td>
+		</tr>
+		<tr>
+			<td>eMail</td>
+			<td>
+				<input type="email" />
+			</td>
+		</tr>
+		<tr>
+			<td>URL</td>
+			<td>
+				<input type="url" />
+			</td>
+		</tr>
+		<tr>
+			<td>Tel</td>
+			<td>
+				<input type="tel" />
+			</td>
+		</tr>
+		<tr>
+			<td>Progress</td>
+			<td>
+				<input type="range" min="0" max="1" step="0.1" onchange="changeHandler(this,'progHandler')" />
+				<progress id="progHandler" value="0.5"></progress>
+			</td>
+		</tr>
+		<tr>
+			<td>Meter</td>
+			<td>
+				<meter value="0.5"></meter>
+				<br/>
+				<meter high="0.7" low="0.3" value="0.25"></meter>
+				<br/>
+				<meter high="0.7" low="0.3" value="0.75"></meter>
+				<br/>
+				<meter optimum="0.75" high="0.7" low="0.3" value="0.25"></meter>
+				<br/>
+				<meter optimum="0.25" high="0.7" low="0.3" value="0.75"></meter>
+			</td>
+		</tr>
+	</table>
+</body>
+</html>

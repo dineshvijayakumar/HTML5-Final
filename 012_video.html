@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 5px dotted gray;
+		}
+	</style>
+	<script>
+		var ctx = null;
+		window.onload = function(){
+			ctx = document.getElementById("can").getContext("2d");
+			setInterval(anim, 10);
+			ctx.rotate((Math.PI/180)*45);
+		}
+		function anim(){
+			ctx.drawImage(document.getElementById("vid"),0,0)
+		}
+	</script>
+</head>
+<body>
+	<video id="vid" autoplay loop>
+		<source src="medias/html5.mp4"></source>
+	</video>
+	<canvas id="can" width="500" height="500" ></canvas>
+</body>
+</html>

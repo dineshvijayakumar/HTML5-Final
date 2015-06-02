@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 5px dotted gray;
+		}
+	</style>
+	<script>
+		var ctx = null;
+		window.onload = function(){
+			ctx = document.getElementById("can").getContext("2d");
+		//	var img = document.getElementById("raj");
+		
+		/*
+		 */
+			var img = new Image();
+			img.src = "images/rajani.jpg";
+			img.addEventListener("load", function(){
+				ctx.translate(500,0);
+				ctx.rotate((Math.PI/180)*90);
+				// ctx.drawImage(img,0, 0,100,100);
+				/*
+				 * repeat | repeat-x | repeat-y
+				 */
+				var pat = ctx.createPattern(img, "repeat");
+				// pat.setTransform(matrix.scale(0.5,0.5));
+				ctx.fillStyle = pat;
+				ctx.fillRect(0,0,500,500)
+			});
+			
+		}
+	</script>
+</head>
+<body>
+<!-- 	<img id="raj" src="images/rajani.jpg" /> -->
+	<canvas id="can" width="500" height="500" ></canvas>
+</body>
+</html>
