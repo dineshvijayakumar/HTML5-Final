@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	 <!--[if lt IE 9]>
+		<script src="lib/excanvas.js"></script>
+	<![endif]-->
+	<style>
+		canvas{
+			border: 2px solid red;
+			margin: auto;
+			display: block;
+		}
+	</style>
+	<script>
+	var d = [
+	{"bX" : 10, "bY": 200, "bW" : 50, "bH" : 400, "bCol": "#79DDEA"},
+	{"bX" : 70, "bY": 400, "bW" : 50, "bH" : 200, "bCol": "#A879EA"},
+	{"bX" : 130, "bY": 450, "bW" : 50, "bH" : 150, "bCol": "#EA79BF"},
+	{"bX" : 190, "bY": 225, "bW" : 50, "bH" : 375, "bCol": "#719349"},
+	{"bX" : 250, "bY": 350, "bW" : 50, "bH" : 250, "bCol": "#C9BD6C"},
+	{"bX" : 310, "bY": 300, "bW" : 50, "bH" : 300, "bCol": "#7C6CC9"},
+	{"bX" : 370, "bY": 375, "bW" : 50, "bH" : 225, "bCol": "#9E78A5"},
+	{"bX" : 430, "bY": 425, "bW" : 50, "bH" : 175, "bCol": "#7895A5"},
+	{"bX" : 490, "bY": 250, "bW" : 50, "bH" : 350, "bCol": "#46BFB5"},
+	{"bX" : 550, "bY": 225, "bW" : 50, "bH" : 375, "bCol": "#DB67A1"},
+	]
+	
+		var ctx = null;
+		window.onload = function(){
+			ctx = document.getElementById("can").getContext("2d");
+			ctx.canvas.width = 600;
+			ctx.canvas.height = 600;
+			ctx.strokeStyle = "silver";
+			
+			for(var i =0 ; i < 600; i+=10){
+				ctx.moveTo(i,0);
+				ctx.lineTo(i, 600);
+				ctx.moveTo(0,i);
+				ctx.lineTo(600, i);
+				ctx.stroke();
+			}
+			
+			for(var box= 0 ; box < d.length; box++){
+				ctx.fillStyle = d[box].bCol;
+				ctx.fillRect(d[box].bX,d[box].bY,d[box].bW,d[box].bH);4
+				ctx.font = "normal 20px Arial";
+				ctx.fillStyle = "black";
+				ctx.fillText(Math.round((d[box].bH/600)*100)+" %",d[box].bX, d[box].bY);
+			}
+			
+		}
+	</script>
+</head>
+<body>
+	<canvas id="can"></canvas>
+</body>
+</html>
