@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		fieldset{
+			width: 250px;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			document.getElementById("btn").addEventListener("click", addHandler);
+			document.getElementById("readBtn").addEventListener("click", readHandler);
+		};
+		function addHandler(){
+			window.localStorage.val = document.getElementById("ti").value;
+		}
+		function readHandler(){
+			document.getElementById("display").innerHTML = window.localStorage.val;
+		}
+	</script>
+</head>
+<body>
+	<fieldset>
+		<legend>Login Form :</legend>
+		<input type="text" id="ti" />
+		<button id="btn">Store Info</button>
+	</fieldset>
+	<hr />
+	<button id="readBtn">Get Info</button>
+	<h4>You Stored : <span  id="display"></span></h4>
+</body>
+</html>
