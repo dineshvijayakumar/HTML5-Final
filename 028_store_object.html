@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Local Storage</title>
+	<style>
+		label{
+			width: 120px;
+			display: inline-block;
+		}
+	</style>
+	<script>
+		window.onload = function(){
+			document.getElementById("storeBtn")
+			.addEventListener("click", storeHandler);
+			
+			document.getElementById("getBtn")
+			.addEventListener("click", getHandler);
+			
+			document.getElementById("getCount")
+			.addEventListener("click", getCountHandler);
+			
+			document.getElementById("getFirstKey")
+			.addEventListener("click", getFirstKeyName);
+			
+			document.getElementById("removeData")
+			.addEventListener("click", removeUserData);
+		};
+		function storeHandler(){
+			/*
+			localStorage.setItem("userName", document.getElementById("uN").value);
+			localStorage.setItem("userEmail", document.getElementById("uE").value);
+			localStorage.setItem("userExp", document.getElementById("uX").value);
+			 */
+			// [object Object]
+			var userData = {
+				userName : document.getElementById("uN").value,
+				userEmail : document.getElementById("uE").value,
+				userExp : document.getElementById("uX").value
+			}
+			localStorage.setItem("userData", JSON.stringify(userData));
+			// localStorage.setItem("userData", userData);
+		};
+		function getHandler(){
+			var data = localStorage.getItem("userData");
+			alert(JSON.parse(data).userName);
+			// alert(data.length);
+		};
+		function getCountHandler(){
+			alert(localStorage.length);
+		};
+		function getFirstKeyName(){
+			alert(localStorage.key(0));// first key index starts with 0;
+		};
+		function removeUserData(){
+			localStorage.removeItem("userData");
+			alert("removed user info")
+		};
+	</script>
+</head>
+<body>
+	<label>User Name</label>
+	<input type="text" id="uN" />
+	<br/>
+	<label>User eMail</label>
+	<input type="text" id="uE" />
+	<br/>
+	<label>User Experience</label>
+	<input type="text" id="uX" />
+	<br/>
+	<label>&nbsp;</label>
+	<button id="storeBtn">Store It</button>
+	<button id="getBtn">Get It</button>
+	<button id="getCount">Get Count</button>
+	<button id="getFirstKey">Get First Key Name </button>
+	<button id="removeData">Remove Item</button>
+</body>
+</html>
