@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="lib/Three.js"></script>
+	<script>
+		// this is where your objects will appear.
+		var scene = new THREE.Scene();
+		
+		// this is what sees your objects
+		var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 1, 10000);
+		camera.position.z = 100;
+		scene.add(camera);
+		
+		// this will draw what camera sees on the screen.
+		var	renderer = 	new THREE.WebGLRenderer() ;
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		window.onload = function(){	
+			document.getElementById("stage").appendChild(renderer.domElement)		
+			// document.body.appendChild(renderer.domElement);
+			setInterval(anim, 10)
+		}
+		// your code comes here
+		//-------------------------------------------------------
+		// var shape = new THREE.SphereGeometry(100);
+		var shape = new THREE.CubeGeometry(50,50,50);
+		var cover = new THREE.MeshNormalMaterial();
+		var ball = new THREE.Mesh(shape, cover);
+		scene.add(ball);
+		
+		//-------------------------------------------------------
+		// your code ends here
+		
+		function anim(){
+			renderer.render(scene,camera);
+			ball.rotation.y+=0.01;
+			// ball.rotation.x+=0.01;
+		}
+		renderer.render(scene,camera);
+	</script>
+</head>
+<body>
+	<div id="stage"></div>
+</body>
+</html>

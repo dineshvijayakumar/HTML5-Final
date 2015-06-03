@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		.box{
+			width: 200px;
+			height: 200px;
+			background-color: orange;
+			margin: 50px auto;
+		}
+		@keyframes vijay{
+			from{
+				background-color: orange;
+				transform : rotate(0deg);
+			}
+			to{
+				background-color: green;
+				transform : rotate(360deg);
+			}
+		}
+		@-webkit-keyframes vijay{
+			from{
+				background-color: orange;
+				-webkit-transform : rotate(0deg);
+			}
+			to{
+				background-color: green;
+				-webkit-transform : rotate(359deg);
+			}
+		}
+		@-moz-keyframes vijay{
+			from{
+				background-color: orange;
+				-moz-transform : rotate(0deg);
+			}
+			to{
+				background-color: green;
+				-moz-transform : rotate(360deg);
+			}
+		}
+		@-o-keyframes vijay{
+			from{
+				background-color: orange;
+				-moz-transform : rotate(0deg);
+			}
+			to{
+				background-color: green;
+				-moz-transform : rotate(360deg);
+			}
+		}
+		.box{
+			animation-name: vijay;
+			animation-duration: 4s;
+			
+			-webkit-animation-name: vijay;
+			-webkit-animation-duration: 4s;
+			
+			-moz-animation-name: vijay;
+			-moz-animation-duration: 4s;
+			
+			-o-animation-name: vijay;
+			-o-animation-duration: 4s;
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+	
+</body>
+</html>

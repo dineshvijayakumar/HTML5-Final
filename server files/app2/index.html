@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		fieldset{
+			width: 350px;
+			height: 250px;
+		}
+		input{
+			width: 250px;
+		}
+		textarea{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+	<script>
+		 var origin = "http://127.0.0.1:8020/app2/index.html";
+		//var origin = "http://learnjs.in";
+		//=========================================================
+		addEventListener("message", messageHandler);
+		
+		function messageHandler(event){
+			// alert(event.data);
+			
+			document.getElementById("ta").innerHTML += event.data+"\n";
+		}
+		
+		//=========================================================
+		window.onload = function(){
+			document.getElementById("sendBtn").addEventListener("click", sendHandler);
+		}
+		function sendHandler(){
+			var val = document.getElementById("ti").value;
+			document.getElementById("vj").contentWindow.postMessage(val,origin);
+		}
+	</script>
+</head>
+<body>
+	<h1>Hello from Accenture | Bangalore</h1>
+	<fieldset>
+		<legend>Chat Application</legend>
+		<input type="text" id="ti" />
+		<button id="sendBtn">Send</button>
+		<br/>
+		<textarea id="ta"></textarea>
+	</fieldset>
+	<hr />
+	<iframe id="vj" width="400" height="500" frameborder="0" src="http://127.0.0.1:8020/app1/index.html"></iframe>
+</body>
+</html>
+
+
+
+<!--
+	<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		fieldset{
+			width: 350px;
+			height: 250px;
+		}
+		input{
+			width: 250px;
+		}
+		textarea{
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+	<script>
+		var origin = "http://127.0.0.1:8020/app1/index.html";
+		addEventListener("message", messageHandler);
+		
+		function messageHandler(event){
+			if(event.origin == "http://learnjs.in"){
+				document.getElementById("ta").value += event.data+"\n";
+			}else{
+				alert("you are not authorised to send me messages")
+			}
+		}
+		//====================================================
+		window.onload = function(){
+			document.getElementById("sendBtn").addEventListener("click", sendHandler);
+		}
+		function sendHandler(){
+			var val = document.getElementById("ti").value;
+			window.parent.postMessage(val,origin);
+		}
+		
+		//====================================================
+		
+	</script>
+</head>
+<body bgcolor="silver">
+	<h1>Widget Application</h1>
+	<hr/>
+	<fieldset>
+		<legend>Chat Application</legend>
+		<input type="text" id="ti" />
+		<button id="sendBtn">Send</button>
+		<br/>
+		<textarea id="ta"></textarea>
+	</fieldset>
+	
+</body>
+</html>
+-->

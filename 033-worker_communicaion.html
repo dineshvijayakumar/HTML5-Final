@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script>
+		var worker = null;
+		window.onload = function(){
+			document.getElementById("startBtn").addEventListener("click", clickHandler)
+			document.getElementById("cb").addEventListener("click", changeHandler)
+		}
+		function messageHandler(evt){
+			document.getElementById("display").innerHTML = evt.data;
+		}
+		function changeHandler(){
+			var val = document.getElementById("ti").value;
+			worker.postMessage(val);
+		}
+		function clickHandler(){
+			worker = new Worker("workers/worker2.js");
+			worker.onmessage = messageHandler;
+		}
+	</script>
+</head>
+<body>
+	<h1 id="display"></h1>
+	<input type="text" id="ti" />
+	<button id="startBtn">Start</button>
+	<button id="cb">Change Value</button>
+</body>
+</html>
+
+<!--
+	var num = 500;
+
+setInterval(randomize, 100);
+
+
+function randomize(){
+	var val = Math.round( Math.random()*num);
+	postMessage(val);
+}
+
+addEventListener("message", numChangeHandler);
+
+function numChangeHandler(evt){
+	num = evt.data;
+};
+
+-->

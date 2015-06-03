@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script>
+		var worker = null;
+		window.onload = function(){
+		document.getElementsByTagName("button")[0].addEventListener("click", startWorker)
+		document.getElementsByTagName("button")[1].addEventListener("click", stopWorker)
+		}
+		function startWorker(){
+			worker = new Worker("workers/worker1.js");
+			worker.addEventListener("message", messageHandler);
+		}
+		function stopWorker(){
+			worker.terminate();
+		}
+		function messageHandler(evt){
+			 document.getElementById("display").innerHTML = evt.data;
+		}
+	</script>
+</head>
+<body>
+	<ul>
+		<li>list item 1</li>
+		<li>list item 2</li>
+		<li>list item 3</li>
+		<li>list item 4</li>
+		<li>list item 5</li>
+	</ul>
+	<h1> Select Me </h1>
+	<button>start worker</button>
+	<button>stop worker</button>
+	<h1 id="display"></h1>
+</body>
+</html>
+
+<!--
+	for(var i = 0; i < 1000000; i++){
+	// document.getElementById("display").innerHTML = i;
+	postMessage(i)
+}
+-->

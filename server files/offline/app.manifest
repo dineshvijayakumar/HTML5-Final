@@ -1,0 +1,13 @@
+CACHE MANIFEST
+# version 001
+
+CACHE:
+images/rajani.jpg
+
+
+NETWORK:
+*
+
+FALLBACK:
+images/spiderman.jpg		images/superman.jpg
+contact.html 				contact_offline.html

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		canvas{
+			outline: 1px solid red;
+			margin: auto;
+			display: block;
+		}
+	</style>
+	<!--[if lt IE 9]>
+			<script src="lib/excanvas.js"></script>
+    <![endif]-->
+	<script>
+		var xhr = null;
+		var ctx = null;
+		var cd = null;
+		window.onload = function(){
+			document.getElementById("btn").addEventListener("click", clickHandler)
+			// drawChart();
+		};
+		
+		function clickHandler(){
+			xhr = new XMLHttpRequest();
+			xhr.open("get","data/chartdata.json",true);
+			xhr.onreadystatechange = ajaxHandler;
+			xhr.send();
+			
+		}
+		function ajaxHandler(){
+			if(xhr.readyState == 4 && xhr.status == 200){
+			cd = JSON.parse(xhr.responseText);
+			console.log(cd)
+			drawChart()
+			}
+		}
+		function drawChart(){
+			ctx = document
+						.getElementsByTagName("canvas")[0]
+						.getContext("2d");
+			ctx.strokeStyle = "silver";		
+			for(var i = 0; i < 400; i+=10){
+				ctx.moveTo(0,i);
+				ctx.lineTo(400,i);
+				ctx.moveTo(i,0);
+				ctx.lineTo(i,400);
+			}
+			ctx.stroke();
+			
+			ctx.fillStyle = "#a2aee5";
+			ctx.fillRect(cd.box1[0],cd.box1[1],cd.box1[2],cd.box1[3]);
+			ctx.fillStyle = "#7c87bc";
+			ctx.fillRect(cd.box2[0],cd.box2[1],cd.box2[2],cd.box2[3]);
+			ctx.fillStyle = "#62a1e0";
+			ctx.fillRect(cd.box3[0],cd.box3[1],cd.box3[2],cd.box3[3]);
+			ctx.fillStyle = "#69c690";
+			ctx.fillRect(cd.box4[0],cd.box4[1],cd.box4[2],cd.box4[3]);
+			ctx.fillStyle = "#56aa50";
+			ctx.fillRect(cd.box5[0],cd.box5[1],cd.box5[2],cd.box5[3]);
+			ctx.fillStyle = "#52844b";
+			ctx.fillRect(cd.box6[0],cd.box6[1],cd.box6[2],cd.box6[3]);
+			
+			ctx.fillStyle = "black";
+			ctx.font = "normal 16px arial"
+			ctx.fillText(((cd.box1[3]/400)*100)+" %",cd.box1[0],cd.box1[1]);
+			ctx.fillText(((cd.box2[3]/400)*100)+" %",cd.box2[0],cd.box2[1]);
+			ctx.fillText(((cd.box3[3]/400)*100)+" %",cd.box3[0],cd.box3[1]);
+			ctx.fillText(((cd.box4[3]/400)*100)+" %",cd.box4[0],cd.box4[1]);
+			ctx.fillText(((cd.box5[3]/400)*100)+" %",cd.box5[0],cd.box5[1]);
+			ctx.fillText(((cd.box6[3]/400)*100)+" %",cd.box6[0],cd.box6[1]);
+		}
+
+	</script>
+</head>
+<body>
+	<button id="btn"> Get Data </button>
+	<canvas width="400" height="400">
+		<h1>Are you still using IE ?</h1>
+	</canvas>
+	
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		canvas{
+			outline: 1px solid red;
+			margin: auto;
+			display: block;
+		}
+	</style>
+	<!--[if lt IE 9]>
+			<script src="lib/excanvas.js"></script>
+    <![endif]-->
+	<script>
+		var data = {
+			"box1" : [10,150,50,250],
+			"box2" : [70,175,50,225],
+			"box3" : [130,100,50,300],
+			"box4" : [190,225,50,175],
+			"box5" : [250,200,50,200],
+			"box6" : [310,325,50,75]
+		}
+		var ctx = null;
+		window.onload = function(){
+			ctx = document
+						.getElementsByTagName("canvas")[0]
+						.getContext("2d");
+			ctx.strokeStyle = "silver";		
+			for(var i = 0; i < 400; i+=10){
+				ctx.moveTo(0,i);
+				ctx.lineTo(400,i);
+				ctx.moveTo(i,0);
+				ctx.lineTo(i,400);
+			}
+			ctx.stroke();
+			
+			ctx.fillStyle = "#a2aee5";
+			ctx.fillRect(data.box1[0],data.box1[1],data.box1[2],data.box1[3]);
+			ctx.fillStyle = "#7c87bc";
+			ctx.fillRect(data.box2[0],data.box2[1],data.box2[2],data.box2[3]);
+			ctx.fillStyle = "#62a1e0";
+			ctx.fillRect(data.box3[0],data.box3[1],data.box3[2],data.box3[3]);
+			ctx.fillStyle = "#69c690";
+			ctx.fillRect(data.box4[0],data.box4[1],data.box4[2],data.box4[3]);
+			ctx.fillStyle = "#56aa50";
+			ctx.fillRect(data.box5[0],data.box5[1],data.box5[2],data.box5[3]);
+			ctx.fillStyle = "#52844b";
+			ctx.fillRect(data.box6[0],data.box6[1],data.box6[2],data.box6[3]);
+			
+			ctx.fillStyle = "black";
+			ctx.font = "normal 16px arial"
+			ctx.fillText(((data.box1[3]/400)*100)+" %",data.box1[0],data.box1[1]);
+			ctx.fillText(((data.box2[3]/400)*100)+" %",data.box2[0],data.box2[1]);
+			ctx.fillText(((data.box3[3]/400)*100)+" %",data.box3[0],data.box3[1]);
+			ctx.fillText(((data.box4[3]/400)*100)+" %",data.box4[0],data.box4[1]);
+			ctx.fillText(((data.box5[3]/400)*100)+" %",data.box5[0],data.box5[1]);
+			ctx.fillText(((data.box6[3]/400)*100)+" %",data.box6[0],data.box6[1]);
+		};
+
+	</script>
+</head>
+<body>
+	<canvas width="400" height="400">
+		<h1>Are you still using IE ?</h1>
+	</canvas>
+</body>
+</html>

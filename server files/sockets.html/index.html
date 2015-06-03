@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<style>
+		fieldset{
+			width: 350px;
+			margin: 50px auto;
+		}
+		textarea{
+			width: 340px;
+			height: 250px;
+		}
+		#sendBtn{
+			width: 100px;
+		}
+		#closeBtn{
+			background-color: yellow;
+			color: black;
+		}
+	</style>
+	<script>
+		var ws = null;
+		window.onload = function (){
+			document
+			.getElementById("sendBtn")
+			.addEventListener("click", clickHandler)
+			document
+			.getElementById("closeBtn")
+			.addEventListener("click", closeBtnClickHandler);
+			
+			//======================================
+			
+			ws = new WebSocket("ws://echo.websocket.org/");
+			ws.addEventListener("open", openHandler)
+			ws.addEventListener("close", closeHandler)
+			ws.addEventListener("message",messageHandler)
+			ws.addEventListener("error", errorHandler)
+		}
+		
+		function clickHandler(){
+			var val = document.getElementById("ti1").value;
+			ws.send(val);
+			document.getElementById("display").value += "\nWhat we sent : "+val+"\n";
+			document.getElementById("ti1").value = "";
+		}
+		function openHandler(evt){
+			document.getElementById("display").value = "Connected \n";
+		}
+		function closeBtnClickHandler(evt){
+			ws.close();
+		}
+		function closeHandler(evt){
+			document.getElementById("display").value += " \nConnection Closed";
+		}
+		function messageHandler(evt){
+		//	document.getElementById("display").value += "\nServer Says : "+evt.data+"\n";
+			var arr = evt.data.split("");
+			
+			document.getElementById("display").value += "What Server Sent : "+arr.reverse();
+		}
+		function errorHandler(evt){
+			alert(evt.message)
+		}
+	</script>
+</head>
+<body>
+	<fieldset>
+		<legend>Chat Application</legend>
+		<table>
+			<tr>
+				<td>
+					Chat Message : 
+				</td>
+				<td>
+					<input type="text" id="ti1" />
+				</td>
+			</tr>
+			<tr>
+				<td>
+					&nbsp;
+				</td>
+				<td>
+					<button id="sendBtn"> Chat </button>
+					<button id="closeBtn"> Close </button>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<hr />
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<textarea id="display"></textarea>
+				</td>
+			</tr>
+		</table>
+	</fieldset>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script>
+		var worker = null;
+		window.onload = function(){
+			document.getElementById("startBtn").addEventListener("click", clickHandler)
+			document.getElementById("cb").addEventListener("click", changeHandler)
+		}
+		function messageHandler(evt){
+			document.getElementById("display").innerHTML = evt.data;
+		}
+		function changeHandler(){
+			var val = document.getElementById("ti").value;
+			worker.postMessage(val);
+		}
+		function clickHandler(){
+			worker = new Worker("workers/worker2.js");
+			worker.onmessage = messageHandler;
+		}
+	</script>
+</head>
+<body>
+	<h1 id="display"></h1>
+	<input type="text" id="ti" />
+	<button id="cb">Change Value</button>
+	<button id="startBtn">Start</button>
+</body>
+</html>
