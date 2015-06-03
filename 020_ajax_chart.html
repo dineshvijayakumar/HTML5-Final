@@ -47,6 +47,7 @@
 	
 	
 	window.onload = function(){
+		xhr = new XMLHttpRequest();
 		ctx = document.getElementById("can").getContext("2d");
 		ctx.canvas.width = 600;
 		ctx.canvas.height = 600;
@@ -55,7 +56,6 @@
 	}
 	
 	function renderChart(){
-		xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = readyHandler;
 		xhr.open("get","data/data.json?"+Math.random(),true);
 		xhr.send();

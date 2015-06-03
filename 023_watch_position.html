@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script>
+		var pos = null, wp = null;
+		window.onload = function(){
+			if(navigator.geolocation){
+				// alert("you can work with geolocation");
+				wp = navigator.geolocation.watchPosition(successFun,failFun, {enableHighAccuracy: true, maximumAge : 4000, timeout : 5000})
+			}else{
+				alert("your browser do not support geolocation")
+			}
+		};
+		function successFun(position){
+			// alert("hurray we found you");
+			//var lon = position.coords.longitude;
+			//var lat = position.coords.latitude;
+
+			//document.getElementById("display").innerHTML = "<p>Longitude : "+lon+" </p><p> Latitude : "+lat+" </p>"
+			//document.getElementById("display").innerHTML += "</hr>"
+			//document.getElementById("display").innerHTML += "<img src='https://maps.googleapis.com/maps/api/staticmap?center="+lat+","+lon+"&zoom=18&markers=color:orange|label:V|"+lat+","+lon+"&maptype=roadmap&size=800x800'/>"
+			// markers=color:orange|label:V|center
+			pos = position;
+			document.getElementById("dis").innerHTML = "You are "+pos.coords.accuracy+"mts away from the marker";
+			renderMap();
+		}
+		function failFun(error){
+			// alert("something went wrong");
+			document.getElementById("dis").innerHTML += error.message;
+			document.getElementById("dis").innerHTML += "<hr/>";
+			document.getElementById("dis").innerHTML += error.code;
+		}
+		function renderMap(){
+			var lon = pos.coords.longitude;
+			var lat = pos.coords.latitude;
+			var zoom = document.getElementById("zoom").value;
+			document.getElementById("map").src = "https://maps.googleapis.com/maps/api/staticmap?center="+lat+","+lon+"&zoom="+zoom+"&markers=color:orange|label:V|"+lat+","+lon+"&maptype=roadmap&size=800x800";
+		}
+		function stopWatching(){
+			navigator.geolocation.clearWatch(wp)
+		}
+		// http://learnjs.in/accenture/geo.html
+	</script>
+</head>
+<body>
+<input id="zoom" value="10" type="range" max="20" min="5" step="1" onchange="renderMap()" />
+<button onclick="stopWatching()">Stop watching me</button>
+<hr/>
+<h1 id="dis"></h1>
+<img id="map" />
+</body>
+</html>

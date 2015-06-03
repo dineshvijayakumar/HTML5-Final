@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script>
+		window.onload = function(){
+			setInterval(checkIt, 500)
+		}
+		function checkIt(){
+			if(navigator.onLine){
+				document.querySelector("#log").textContent = "Online";
+				document.querySelector("h1").setAttribute("style","color:green")
+			}else{
+				document.querySelector("#log").textContent = "Offline";
+				document.querySelector("h1").setAttribute("style","color:red")
+			}
+		}
+	</script>
+</head>
+<body>
+	<h1>You are currently <span id="log"></span></h1>
+</body>
+</html>
